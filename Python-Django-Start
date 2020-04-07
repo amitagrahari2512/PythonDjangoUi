@@ -1,0 +1,107 @@
+1 - First install Virtual wrapper
+
+pip install virtualenvwrapper-win
+
+
+2 - Then create our environment
+
+mkvirtualenv <Any-Name>
+
+3 - Then Install Django
+
+pip install Django
+
+4 - Check version of Django 
+
+django-admin --version	
+
+5 - Use folder where we want to create poject
+
+6 - Django internally provide light weight server, So for run application
+
+python manage.py runserver
+
+7- Apply Migration 
+
+python manage.py migrate
+
+8 - How to reach environment :
+
+workon <Environment-Name>
+
+9 - Create application
+
+python manage.py startapp <App-Name>
+
+10 - Collect Static files in Django
+
+python manage.py collectstatic
+
+----------and provide static folder in Setting.py
+
+		STATICFILES_DIRS = [
+			os.path.join(BASE_DIR, '<Folder Name where you put your static files>') 
+		]
+		
+		STATIC_ROOT = os.path.join(BASE_DIR,'<Folder name where python put all staic files after collectstatic command and use it>')
+		
+		in your html files
+		
+		add {% load static %} in startion, so Django knows he needs to load those static files
+		and change add static files to {% static 'url' %}
+		example :
+		<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href={% static 'styles/bootstrap4/bootstrap.min.css' %}>
+		
+		
+11 - connect postgress with our application we need to get connector so we need to install (psycopg2)
+
+pip install psycopg2
+
+12 - Change db name and provide host and username password in settings.py
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'pythondb',
+        'USER': 'postgres',
+        'PASSWORD': 'root',
+        'HOST' : 'localhost'
+    }
+}
+
+
+12- Now if we want to create table in database with the help of code, we need to do migration for this.
+So for this first we need to add our application name in settings.py under INSTALLED_APPS.
+
+13 - When we want to use a images in Django Python we need to install a library (Pillow) which can handled it.
+
+pip install pillow
+
+14 -  Now then we need to run migration command to create migration file 
+
+python manage.py makemigrations
+
+Now in migration folder in app , one file is generated with all model value
+
+15 - After this we need to migrate this file to sql.But if we wnat to check whick query it is fired then we need to use below command
+
+python manage.py sqlmigrate <AppName> <Migartion-version-No>
+
+python manage.py sqlmigrate travello 0001
+
+
+16 - With below command we can migrate file in db
+
+python manage.py migrate
+
+17 - Create Superuser in python
+
+python manage.py createsuperuser
+
+then we can set username and password
+
+
+
+
+

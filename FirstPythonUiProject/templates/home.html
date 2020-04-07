@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content%}
+
+<h1>Hello {{name}} :: !!!!!!!!!!!!!!!!!!!! </h1>
+<h2>you are learning Django Template Language</h2>
+<h3>Here we use Ninja</h3>
+
+
+<form action="add" method="post">
+
+    {% csrf_token %}
+
+    Enter 1<sup>st</sup> no : <input type = "text" name="num1"/><br>
+    Enter 2<sup>nd</sup> no : <input type = "text" name="num2"/><br>
+    <input type="submit"/>
+</form>
+
+{% endblock content%}
